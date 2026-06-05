@@ -46,6 +46,20 @@ pipeline {
                 }
             }
         }
+         stage('Docker Build') {
+            steps {
+                dir('TestNG_selenium') {
+                    bat 'docker -t build testng-framework'
+               }
+           }
+        }
+        stage('Docker Run') {
+            steps {
+                dir('TestNG_selenium') {
+                    bat 'docker run testng-framework'
+               }
+           }
+    }
     }
 
     post {
