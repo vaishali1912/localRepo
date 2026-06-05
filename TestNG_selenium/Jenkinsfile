@@ -10,42 +10,40 @@ pipeline {
 
         stage('Checkout') {
             steps {
-				      
                 git branch: 'master',
                     url: 'https://github.com/vaishali1912/localRepo.git'
-                    }
-            
+            }
         }
 
         stage('Build') {
             steps {
-				dir(TestNG_selenium') {
-                bat 'mvn clean'
+                dir('TestNG_selenium') {
+                    bat 'mvn clean'
                 }
             }
         }
 
         stage('Compile') {
             steps {
-				dir(TestNG_selenium') {
-                bat 'mvn compile'
-            }
+                dir('TestNG_selenium') {
+                    bat 'mvn compile'
+                }
             }
         }
 
         stage('Test') {
             steps {
-				dir(TestNG_selenium') {
-                bat 'mvn test'
-            }
+                dir('TestNG_selenium') {
+                    bat 'mvn test'
+                }
             }
         }
 
         stage('Package') {
             steps {
-				dir(TestNG_selenium') {
-                bat 'mvn package'
-            }
+                dir('TestNG_selenium') {
+                    bat 'mvn package'
+                }
             }
         }
     }
