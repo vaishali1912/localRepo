@@ -10,32 +10,42 @@ pipeline {
 
         stage('Checkout') {
             steps {
+				      
                 git branch: 'master',
-                    url: 'https://github.com/vaishali1912/SDET_wipro_2026.git'
-            }
+                    url: 'https://github.com/vaishali1912/localRepo.git'
+                    }
+            
         }
 
         stage('Build') {
             steps {
+				dir(TestNG_selenium') {
                 bat 'mvn clean'
+                }
             }
         }
 
         stage('Compile') {
             steps {
+				dir(TestNG_selenium') {
                 bat 'mvn compile'
+            }
             }
         }
 
         stage('Test') {
             steps {
+				dir(TestNG_selenium') {
                 bat 'mvn test'
+            }
             }
         }
 
         stage('Package') {
             steps {
+				dir(TestNG_selenium') {
                 bat 'mvn package'
+            }
             }
         }
     }
