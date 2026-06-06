@@ -49,7 +49,7 @@ pipeline {
          stage('Docker Build') {
             steps {
                 dir('TestNG_selenium') {
-                    bat 'docker -t build testng-framework'
+                    bat 'docker -t build testng-framework .'
                }
            }
         }
